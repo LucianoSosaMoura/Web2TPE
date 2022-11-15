@@ -10,9 +10,9 @@
       {else}
          <li> <a href="viewCiudad/{$ciudad->idCiudad}">Ciudad N°: {$ciudad->idCiudad}</a> Nombre: {$ciudad->nombre} Provincia: {$ciudad->provincia} Habitantes: {$ciudad->cantidadHabitantes} <a href="deleteCiudad/{$ciudad->idCiudad}">Borrar</a> </li>
          <form action="updateCiudad/{$ciudad->idCiudad}" method="post">
-            <input type="text" name="nombre" id="nombre" placeholder="Nombre">
-            <input type="text" name="provincia" id="provincia" placeholder="Provincia">
-            <input type="number" name="cantidadHabitantes" id="cantidadHabitantes" placeholder="Cantidad de habitantes">
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre" value= "{$ciudad->nombre}">
+            <input type="text" name="provincia" id="provincia" placeholder="Provincia" value= "{$ciudad->provincia}">
+            <input type="number" name="cantidadHabitantes" id="cantidadHabitantes" placeholder="Cantidad de habitantes" value= "{$ciudad->cantidadHabitantes}">
             <input type="submit" value="Modificar">
          </form>      
       {/if}

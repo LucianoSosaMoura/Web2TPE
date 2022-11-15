@@ -10,13 +10,12 @@
       {else}
          <li> <a href="viewPropiedad/{$propiedad->idPropiedad}">Propiedad N°: {$propiedad->idPropiedad}</a> Operacion: {$propiedad->operacion} Descripcion: {$propiedad->descripcion} Precio: $ {$propiedad->precio} Ciudad: {$propiedad->idCiudad} <a href="deletePropiedad/{$propiedad->idPropiedad}">Borrar</a></li>
             <form action="updatePropiedad/{$propiedad->idPropiedad}" method="post">
-               <input type="text" name="operacion" id="operacion" placeholder="Operacion">
-               <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion">
-               <input type="number" name="precio" id="precio" placeholder="Precio">
-               <select name="idCiudad">
-                  <option selected>Seleccione una ciudad</option>
+               <input type="text" name="operacion" id="operacion" value= "{$propiedad->operacion}">
+               <input type="text" name="descripcion" id="descripcion" value= "{$propiedad->descripcion}">
+               <input type="number" name="precio" id="precio" value= "{$propiedad->precio}">
+               <select name="idCiudad" required>
                   {foreach from=$ciudades item=$ciudad}
-                     <option value={$ciudad->idCiudad}>{$ciudad->nombre}</option>
+                     <option value='{$ciudad->idCiudad}'>{$ciudad->nombre}</option>
                   {/foreach}
                </select>
                <input type="submit" value="Modificar">
@@ -39,7 +38,6 @@
       <label>Precio: </label>
       <input type="number" name="precio" id="precio">
       <select name="idCiudad">
-         <option selected>Seleccione una ciudad</option>
          {foreach from=$ciudades item=$ciudad}
             <option value={$ciudad->idCiudad}>{$ciudad->nombre}</option>
          {/foreach}
