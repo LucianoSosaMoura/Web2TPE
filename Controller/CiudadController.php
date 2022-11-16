@@ -22,13 +22,19 @@
         public function addCiudad() {
             // TODO: validar entrada de datos
             $this->authHelper->checkLoggedIn();
-            $nombre = $_POST['nombre'];
-            $provincia = $_POST['provincia'];
-            $cantidadHabitantes = $_POST['cantidadHabitantes'];
 
-            $this->model->addCiudad($nombre, $provincia, $cantidadHabitantes);
+            if (!empty($_POST['nombre']) && !empty($_POST['provincia']) && !empty($_POST['cantidadHabitantes'])){
+                $nombre = $_POST['nombre'];
+                $provincia = $_POST['provincia'];
+                $cantidadHabitantes = $_POST['cantidadHabitantes'];
 
-            header("Location: " . BASE_URL."ciudades"); 
+                $this->model->addCiudad($nombre, $provincia, $cantidadHabitantes);
+
+                header("Location: " . BASE_URL."ciudades"); 
+            }
+            else {
+                header("Location: " . BASE_URL."ciudades"); 
+            };
         }
     
         public function deleteCiudad($idCiudad) {
@@ -42,11 +48,17 @@
         }
         function updateCiudad($id){
             $this->authHelper->checkLoggedIn();
-            $nombre = $_POST['nombre'];
-            $provincia = $_POST['provincia'];
-            $cantidadHabitantes = $_POST['cantidadHabitantes'];
-            $this->model->updateCiudad($nombre, $provincia, $cantidadHabitantes, $id);
-            header("Location: " . BASE_URL ."ciudades");
+
+            if (!empty($_POST['nombre']) && !empty($_POST['provincia']) && !empty($_POST['cantidadHabitantes'])){
+                $nombre = $_POST['nombre'];
+                $provincia = $_POST['provincia'];
+                $cantidadHabitantes = $_POST['cantidadHabitantes'];
+                $this->model->updateCiudad($nombre, $provincia, $cantidadHabitantes, $id);
+                header("Location: " . BASE_URL ."ciudades");
+            }
+            else {
+                header("Location: " . BASE_URL."ciudades"); 
+            };
         }
 
     }

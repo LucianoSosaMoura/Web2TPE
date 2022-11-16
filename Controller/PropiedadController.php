@@ -29,6 +29,8 @@
     public function addPropiedad() {
         // TODO: validar entrada de datos
         $this->authHelper->checkLoggedIn();
+
+        if (!empty($_POST['operacion']) && !empty($_POST['descripcion']) && !empty($_POST['precio']) && !empty($_POST['idCiudad'])){
         $operacion = $_POST['operacion'];
         $descripcion = $_POST['descripcion'];
         $precio = $_POST['precio'];
@@ -36,6 +38,10 @@
 
         $this->model->addPropiedad($operacion, $descripcion, $precio, $idCiudad);
         header("Location: " . BASE_URL); 
+        }
+        else {
+            header("Location: " . BASE_URL);
+        };
     }
    
     public function deletePropiedad($idPropiedad) {
@@ -51,12 +57,19 @@
 
     function updatePropiedad($id){
         $this->authHelper->checkLoggedIn();
-        $operacion = $_POST['operacion'];
-        $descripcion = $_POST['descripcion'];
-        $precio = $_POST['precio'];
-        $idCiudad = $_POST['idCiudad'];
-        $this->model->updatePropiedad($operacion, $descripcion, $precio, $idCiudad, $id);
-        header("Location: " . BASE_URL);
+
+        if (!empty($_POST['operacion']) && !empty($_POST['descripcion']) && !empty($_POST['precio']) && !empty($_POST['idCiudad'])){
+            $operacion = $_POST['operacion'];
+            $descripcion = $_POST['descripcion'];
+            $precio = $_POST['precio'];
+            $idCiudad = $_POST['idCiudad'];
+       
+            $this->model->updatePropiedad($operacion, $descripcion, $precio, $idCiudad, $id);
+            header("Location: " . BASE_URL);
+        }
+        else {
+            header("Location: " . BASE_URL);
+        };
 
     }
 
